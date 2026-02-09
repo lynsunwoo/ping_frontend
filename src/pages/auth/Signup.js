@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../styles/auth.scss';
 import Select from './Select';
 import eye from "../../assets/icon-eye.svg";
-
+import BASE_URL from '../../config';
 function Signup() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -84,7 +84,7 @@ function Signup() {
       };
 
       const res = await axios.post(
-        "http://localhost:9070/api/auth/signup",
+        `${BASE_URL}/api/auth/signup`,
         payload
       );
 

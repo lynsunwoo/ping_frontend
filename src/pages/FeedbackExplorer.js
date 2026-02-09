@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import FeedbackCard from './FeedbackCard';
 import arrow from "../assets/arrow_right.svg";
-
+import BASE_URL from '../config';
 const PAGE_SIZE = 4;
 
 function FeedbackExplorer() {
@@ -15,7 +15,7 @@ function FeedbackExplorer() {
      카테고리 DB 로딩
   =============================== */
   useEffect(() => {
-    fetch('http://localhost:9070/api/categories')
+    fetch(`${BASE_URL}/api/categories`)
       .then(res => res.json())
       .then(data => setCategories(data))
       .catch(err => console.error('카테고리 로딩 실패:', err));
@@ -25,7 +25,7 @@ function FeedbackExplorer() {
      게시물 DB 로딩
   =============================== */
   useEffect(() => {
-    fetch('http://localhost:9070/api/posts')
+    fetch(`${BASE_URL}/api/posts`)
       .then(res => res.json())
       .then(data => setFeedbacks(data))
       .catch(err => console.error('게시물 로딩 실패:', err));

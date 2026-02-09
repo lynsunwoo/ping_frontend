@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import qnaData from './qna.json';
 import '../styles/qna.scss';
 import axios from 'axios';
-
+import BASE_URL from '../../config';
 
 function Question() {
   const [items, setItems] = useState([]);
@@ -14,7 +14,7 @@ function Question() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:9070/qna/questions')
+      .get(`${BASE_URL}/qna/questions`)
       .then((res) => setItems(res.data))
       .catch((err) => console.error(err));
   }, [])

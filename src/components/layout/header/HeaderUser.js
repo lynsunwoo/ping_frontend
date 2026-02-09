@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import Api from "../../../api/Api";
-
+import BASE_URL from '../../../config';
 import logoutImg from "../../../assets/icon-login.svg";
 import Logogray from "../../../assets/Logo_gray.svg";
 import SearchIcon from "../../../assets/icon-search.svg";
@@ -14,7 +14,7 @@ const HeaderUser = ({ variant }) => {
   const [keyword, setKeyword] = useState("");
 
   // ✅ Api baseURL
-  const API_BASE = Api.defaults.baseURL || "http://localhost:9070";
+  const API_BASE = Api.defaults.baseURL || `${BASE_URL}`;
   const DEFAULT_AVATAR_SRC = `${API_BASE}/uploads/default.png`;
 
   /* ===============================

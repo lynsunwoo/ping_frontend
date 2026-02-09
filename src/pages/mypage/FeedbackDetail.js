@@ -4,8 +4,8 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import IconMessage from "../../assets/icon-message.svg";
 import { getMyFeedbackDetail, updateMyFeedback, deleteMyFeedback } from "../../api/MyPage_Api";
 import "../styles/feedbackDetail.scss";
-
-const API_BASE = "http://localhost:9070";
+import BASE_URL from '../../config';
+const API_BASE = `${BASE_URL}`;
 
 const formatDate = (datetime) => {
   if (!datetime) return "";

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
-
+import BASE_URL from '../../../config';
 export default function UserModal({ user, onClose, onDeleted }) {
   useEffect(() => {
     const onKeyDown = (e) => e.key === "Escape" && onClose?.();
@@ -25,7 +25,7 @@ export default function UserModal({ user, onClose, onDeleted }) {
     if (!ok) return;
 
     try {
-      await axios.delete(`http://localhost:9070/admin/users/${user.id}`, {
+      await axios.delete(`${BASE_URL}/admin/users/${user.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

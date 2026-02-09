@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import DesignItem from '../DesignItem';
 import Api from '../../api/Api';
 import '../styles/archive.scss';
-
+import BASE_URL from '../../config';
 function Archive() {
   const [categories, setCategories] = useState([]);
   const [active, setActive] = useState('전체');
@@ -16,7 +16,7 @@ function Archive() {
      카테고리 로딩 (UI용)
      =============================== */
   useEffect(() => {
-    fetch('http://localhost:9070/api/categories')
+    fetch(`${BASE_URL}/api/categories`)
       .then(res => res.json())
       .then(data => {
         const subs = Object.values(data).flat();
@@ -82,7 +82,7 @@ function Archive() {
       map.set(item.id, {
         id: item.id,
         title: item.title,
-        image: `http://localhost:9070${item.imagePath}`,
+        image: `${BASE_URL}${item.imagePath}`,
         date: item.createdAt,
         viewCount: item.viewCount ?? 0,
         question_count: item.pins ?? 0,

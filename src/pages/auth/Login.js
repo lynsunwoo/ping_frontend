@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/auth.scss';
 import eye from "../../assets/icon-eye.svg";
 import axios from 'axios';
-
+import BASE_URL from '../../config';
 function Login(props) {
   // 페이지간 이동을 위한 navigate 선언 
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function Login(props) {
 
     try {
       const res = await axios.post(
-        'http://localhost:9070/api/auth/login',
+        `${BASE_URL}/api/auth/login`,
         form
       );
 

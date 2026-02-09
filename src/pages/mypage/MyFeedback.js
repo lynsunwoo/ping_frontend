@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconMessage from "../../assets/icon-message.svg";
 import { getMyFeedback } from "../../api/MyPage_Api";
-
-const API_BASE = "http://localhost:9070";
+import BASE_URL from '../../config';
+const API_BASE = `${BASE_URL}`;
 
 const formatDate = (datetime) => {
   if (!datetime) return "";

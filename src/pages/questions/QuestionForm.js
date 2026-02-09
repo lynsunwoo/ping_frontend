@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/qna.scss';
-
+import BASE_URL from '../../config';
 function QuestionForm() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -21,7 +21,7 @@ function QuestionForm() {
         }
         try {
             await axios.post(
-                'http://localhost:9070/qna/questions',
+                `${BASE_URL}/qna/questions`,
                 { title, content },
                 {
                     headers: {

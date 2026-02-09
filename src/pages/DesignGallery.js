@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DesignItem from "./DesignItem";
 import { useLocation } from "react-router-dom";
+import BASE_URL from '../config';
 function DesignGallery() {
   const [items, setItems] = useState([]);
   const [isUnder1023, setIsUnder1023] = useState(
@@ -23,7 +24,7 @@ function DesignGallery() {
      게시물 로딩 함수
      =============================== */
   const fetchPosts = () => {
-    fetch("http://localhost:9070/api/posts")
+    fetch(`${BASE_URL}/api/posts`)
       .then((res) => res.json())
       .then((data) => {
         setItems(Array.isArray(data) ? data : []);
@@ -59,7 +60,7 @@ function DesignGallery() {
       map.set(item.id, {
         id: item.id,
         title: item.title,
-        image: `http://localhost:9070${item.imagePath}`,
+        image: `${BASE_URL}${item.imagePath}`,
         date: item.createdAt,
         ratio: ratios[Math.floor(Math.random() * ratios.length)],
 

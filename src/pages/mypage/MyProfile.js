@@ -2,11 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Select from "../auth/Select";
-
+import BASE_URL from '../../config';
 function MyProfile() {
   const navigate = useNavigate();
 
-  const API_BASE = "http://localhost:9070";
+  const API_BASE = `${BASE_URL}`;
 
   // ======================
   // form state

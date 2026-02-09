@@ -4,7 +4,7 @@ import Api from "../../api/Api";
 import IconEdit2 from "../../assets/icon-edit-2.svg";
 import IconId from "../../assets/icon-user.svg";     // 없으면 IconEdit2로 교체 가능
 import IconEdit from "../../assets/icon-edit.svg";   // 아바타 위 작은 편집 아이콘
-
+import BASE_URL from '../../config';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
 export default function MyPageHeader() {
@@ -16,8 +16,8 @@ export default function MyPageHeader() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
 
-  // Api 인스턴스의 baseURL(=http://localhost:9070)
-  const API_BASE = Api.defaults.baseURL || "http://localhost:9070";
+  // Api 인스턴스의 baseURL(=`${BASE_URL}`)
+  const API_BASE = Api.defaults.baseURL || `${BASE_URL}`;
   const DEFAULT_AVATAR = `${API_BASE}/uploads/default.png`;
 
   // 1) 프로필 조회: /users/me 로 통일

@@ -3,7 +3,7 @@ import '../styles/upload.scss';
 import { useNavigate } from 'react-router-dom';
 import imageIcon from '../../assets/icon-image.svg';
 import axios from 'axios';
-
+import BASE_URL from '../../config';
 function Upload(props) {
 
   // 선택된 문제유형 클래스 변경을 위한 함수 설정 
@@ -23,7 +23,7 @@ function Upload(props) {
      =============================== */
   useEffect(() => {
     axios
-      .get('http://localhost:9070/api/categories')
+      .get(`${BASE_URL}/api/categories`)
       .then(res => {
         console.log('카테고리 응답:', res.data);
         setCategories(res.data);
@@ -80,7 +80,7 @@ function Upload(props) {
   //     );
 
   //     const res = await axios.post(
-  //       'http://localhost:9070/api/posts',
+  //       `${BASE_URL}/api/posts`,
   //       formData,
   //       {
   //         headers: {
@@ -134,7 +134,7 @@ function Upload(props) {
 
     try {
       const res = await axios.post(
-        'http://localhost:9070/api/posts',
+        `${BASE_URL}/api/posts`,
         formData,
         {
           headers: {

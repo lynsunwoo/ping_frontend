@@ -6,8 +6,8 @@ import Api from "../../api/Api";
 import IconEye from "../../assets/icon-eye.svg";
 import IconLike from "../../assets/icon-like.svg";
 import IconMessage from "../../assets/icon-message.svg";
-
-const API_BASE = "http://localhost:9070";
+import BASE_URL from '../../config';
+const API_BASE = `${BASE_URL}`;
 const PLACEHOLDER = `${process.env.PUBLIC_URL}/images/thumb-placeholder.png`;
 
 const MyDesigns = () => {

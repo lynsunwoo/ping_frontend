@@ -3,7 +3,7 @@ import AdminSearchBar from "../components/AdminSearchBar";
 import StatusBadge from "../components/StatusBadge";
 import UserModal from "../modals/UserModal";
 import axios from "axios";
-
+import BASE_URL from '../../../config';
 
 export default function AdminUsers() {
   const [q, setQ] = useState("");
@@ -57,7 +57,7 @@ export default function AdminUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:9070/admin/users", {
+        const res = await axios.get(`${BASE_URL}/admin/users`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

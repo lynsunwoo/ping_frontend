@@ -199,6 +199,11 @@ body {
 
         display: flex;
         gap: 10px;
+        align-items: center;
+
+        img {
+          width: 36px;
+        }
       }
 
       button {
@@ -378,4 +383,5 @@ body {
   .footer {
     opacity: 0;
   }
+
 }

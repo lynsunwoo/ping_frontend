@@ -6,6 +6,7 @@ import logoutImg from "../../../assets/icon-login.svg";
 import Logogray from "../../../assets/Logo_gray.svg";
 import SearchIcon from "../../../assets/icon-search.svg";
 // import Alarm from "../../../assets/icon-bell.svg";
+import QnaIcon from "../../../assets/icon-question.svg";
 
 const HeaderUser = ({ variant }) => {
   const [user, setUser] = useState(null);
@@ -133,9 +134,9 @@ const HeaderUser = ({ variant }) => {
           </Link>
 
           <div className="btns">
-            {/* <Link to="/mypage/alarm" className="alarm-btn">
-              <img src={Alarm} alt="알람" />
-            </Link> */}
+            <Link to="/qna" className="qna-btn">
+              <img src={QnaIcon} alt="질문과 답변 아이콘" />
+            </Link>
             <button onClick={handleLogout} className="logout-btn">
               <img src={logoutImg} alt="로그아웃 이미지" />
             </button>
@@ -152,3 +153,4 @@ const HeaderUser = ({ variant }) => {
 };
 
 export default HeaderUser;
+

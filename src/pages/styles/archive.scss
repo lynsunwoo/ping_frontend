@@ -10,10 +10,6 @@ header.guest+.archive section .top-text {
   section {
     padding: 80px 0;
 
-    .top-text {
-      //padding-top: 100px;
-    }
-
     .filters {
       padding: 20px 0;
       grid-column: 1 / -1;
@@ -161,4 +157,5 @@ header.guest+.archive section .top-text {
       }
     }
   }
+
 }

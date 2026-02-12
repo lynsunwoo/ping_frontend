@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState} from 'react';
 import '../styles/upload.scss';
 import { useNavigate } from 'react-router-dom';
 import upload from "../../assets/icon-upload.svg";
@@ -12,7 +12,7 @@ function Upload(props) {
 
   // 페이지간 이동을 위한 url관리
   const navigate = useNavigate();
-  const fileInputRef = useRef(null);
+  // const fileInputRef = useRef(null);
   
   //린 
   const [file, setFile] = useState(null);
@@ -20,13 +20,13 @@ function Upload(props) {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
 
-  // useEffect(() => {
-  //   return () => {
-  //     if (preview) {
-  //       URL.revokeObjectURL(preview);
-  //     }
-  //   };
-  // }, [preview]);
+  useEffect(() => {
+    return () => {
+      if (preview) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
   
   /* ===============================
      🔹 카테고리 데이터 로딩
@@ -211,13 +211,19 @@ function Upload(props) {
               className="upload_file"
               accept='.png,.jpg,.jpeg,.pdf'
               onChange={(e) => {
-                const selectedFile = e.target.files?.[0];
+                const selectedFile = e.target.files[0];
                 if (!selectedFile) return;
-
-              setFile(selectedFile);
-              setPreview(URL.createObjectURL(selectedFile));
-                }}
-              style={{ display: 'none' }}
+              
+                setFile(selectedFile);
+              
+                // 이미지일 경우에만 preview 생성
+                if (selectedFile.type.startsWith("image/")) {
+                  const imageUrl = URL.createObjectURL(selectedFile);
+                  setPreview(imageUrl);
+                } else {
+                  setPreview(null);
+                }
+              }}
               required
             />
           </div>
@@ -310,6 +316,7 @@ function Upload(props) {
 
 
 export default Upload;
+
 
 
 

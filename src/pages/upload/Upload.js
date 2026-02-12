@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../styles/upload.scss';
 import { useNavigate } from 'react-router-dom';
 import imageIcon from '../../assets/icon-image.svg';
@@ -12,20 +12,21 @@ function Upload(props) {
 
   // 페이지간 이동을 위한 url관리
   const navigate = useNavigate();
-
+  const fileInputRef = useRef(null);
+  
   //린 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
 
-  useEffect(() => {
-    return () => {
-      if (preview) {
-        URL.revokeObjectURL(preview);
-      }
-    };
-  }, [preview]);
+  // useEffect(() => {
+  //   return () => {
+  //     if (preview) {
+  //       URL.revokeObjectURL(preview);
+  //     }
+  //   };
+  // }, [preview]);
   
   /* ===============================
      🔹 카테고리 데이터 로딩
@@ -182,7 +183,8 @@ function Upload(props) {
         <form className="upload_form col-6">
 
           {/* 이미지 업로드 안내 영역 */}
-        <div className="upload_dropzone" role='button' tabIndex={0}>
+        <div className="upload_dropzone" role='button' tabIndex={0}
+          onClick={() => fileInputRef.current?.click()}>
             <div className="upload_dropzoneInner">
               {preview  ?(
                 <div className="upload_preview">
@@ -204,24 +206,18 @@ function Upload(props) {
             </div>
 
             <input
+              ref={fileInputRef}
               type="file"
               className="upload_file"
               accept='.png,.jpg,.jpeg,.pdf'
               onChange={(e) => {
-                const selectedFile = e.target.files[0];
+                const selectedFile = e.target.files?.[0];
                 if (!selectedFile) return;
-              
-                if (preview) {
-                  URL.revokeObjectURL(preview);
-                }
-              
-                setFile(selectedFile);
-              
-                const imageUrl = URL.createObjectURL(selectedFile);
-                setPreview(imageUrl);
-                console.log("파일 선택됨");
-console.log(e.target.files);
-              }}
+
+              setFile(selectedFile);
+              setPreview(URL.createObjectURL(selectedFile));
+                }}
+              style={{ display: 'none' }}
               required
             />
           </div>
@@ -314,4 +310,5 @@ console.log(e.target.files);
 
 
 export default Upload;
+
 

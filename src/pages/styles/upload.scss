@@ -1,6 +1,17 @@
 @use'../../styles/base' as *;
 
 /* upload.js 서식 */
+.upload_preview {
+  margin-top: 16px;
+
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+}
+
 .upload {
   background: $main-white;
 
@@ -261,4 +272,5 @@
       
     }
   }
+
 }

@@ -219,6 +219,8 @@ function Upload(props) {
               
                 const imageUrl = URL.createObjectURL(selectedFile);
                 setPreview(imageUrl);
+                console.log("파일 선택됨");
+console.log(e.target.files);
               }}
               required
             />
@@ -312,3 +314,4 @@ function Upload(props) {
 
 
 export default Upload;
+

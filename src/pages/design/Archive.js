@@ -95,7 +95,7 @@ function Archive() {
   return (
     <main className="archive container">
       <section className="grid">
-        <div className="top-text col-12">
+        <div className="col-12">
           <h2>아카이브</h2>
           <p>디자인 문제를 중심으로 커뮤니티의 질문과 피드백을 탐색하세요.</p>
         </div>
@@ -143,3 +143,4 @@ function Archive() {
 }
 
 export default Archive;
+

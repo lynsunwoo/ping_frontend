@@ -38,7 +38,7 @@ export default function DesignItem({
         <div className="icons">
           <span>
             <img src={eye} alt="조회수 아이콘" />
-            {item.view_count ?? 0}
+            {item.viewCount ?? 0}
           </span>
 
           <span>
@@ -62,3 +62,4 @@ export default function DesignItem({
     </Link>
   );
 }
+

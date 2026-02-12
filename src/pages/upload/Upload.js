@@ -183,8 +183,7 @@ function Upload(props) {
         <form className="upload_form col-6">
 
           {/* 이미지 업로드 안내 영역 */}
-        <div className="upload_dropzone" role='button' tabIndex={0}
-          onClick={() => fileInputRef.current?.click()}>
+        <div className="upload_dropzone" role='button' tabIndex={0}>
             <div className="upload_dropzoneInner">
               {preview  ?(
                 <div className="upload_preview">
@@ -316,6 +315,7 @@ function Upload(props) {
 
 
 export default Upload;
+
 
 
 

@@ -7,7 +7,13 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import BASE_URL from '../../config';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
 dayjs.locale('ko');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Asia/Seoul');
 
 function Detail() {
   const navigate = useNavigate();
@@ -234,7 +240,7 @@ function Detail() {
                   <li key={a.answer_no}>
                     <strong>{a.user_nickname}</strong>
                     <br />
-                    {dayjs(a.create_datetime).format('YYYY.MM.DD HH:mm')}
+                    {dayjs.utc(a.create_datetime).tz('Asia/Seoul').format('YYYY.MM.DD HH:mm')}
                     <br />
                     {a.answer_content}
                   </li>
@@ -328,7 +334,7 @@ function Detail() {
                         <strong>{a.user_nickname}</strong>
                         <br />
                         <span>
-                          {dayjs(a.create_datetime).format('YYYY.MM.DD HH:mm')}
+                          {dayjs.utc(a.create_datetime).tz('Asia/Seoul').format('YYYY.MM.DD HH:mm')}
                         </span>
                         <br />
                         {a.answer_content}
@@ -386,5 +392,6 @@ function Detail() {
     </section>
   );
 }
+
 
 export default Detail;

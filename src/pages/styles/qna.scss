@@ -6,6 +6,9 @@
   section {
     padding: 80px 0;
 
+    h2{
+      color:$main_gray_800;
+    }
     .qna-form_btn {
       grid-column: 1/ -1;
       display: flex;
@@ -35,46 +38,42 @@
 
         thead {
           th {
-            padding: 20px 0;
+            padding: 10px;
             border-bottom: 1px solid $main_gray_300;
             font-weight: $bold;
+            color: $main_gray_700;
           }
         }
 
         tbody {
-
+          color:$main_gray_500;
           /* =====================
             질문 행
           ===================== */
           .qna-row {
             cursor: pointer;
-            line-height: 32px;
-
+            
             &:hover {
               background: rgba($primary_blue, 0.05);
             }
 
-            td:first-child {
-              padding-top: 10px;
+            td{
+              position:relative;
+              padding:10px 0px;
             }
 
             td:not(:nth-child(2)) {
               text-align: center;
             }
 
-            td:nth-child(2) {
-              padding-left: 30px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              padding-right: 20px;
-            }
-
             .arrow {
+              position:absolute;
+              right:-10px;
+              top:15px;
               font-size: 12px;
-              display: inline-flex; // 기준 안정화
-              align-items: center;
-              justify-content: center;
+              // display: inline-flex; // 기준 안정화
+              // align-items: center;
+              // justify-content: center;
 
               transform-origin: 50% 50%;
               transition: transform 0.3s ease;

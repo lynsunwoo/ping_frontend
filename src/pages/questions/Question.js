@@ -72,7 +72,7 @@ function Question() {
                         >▼</span>
                       </td>
                       <td>{item.author}</td>
-                      <td>{item.date.slice(0, 10)}</td>
+                      <td>{item.date.slice(2, 10).replace(/-/g,".")}</td>
                     </tr>
 
                     {/* 답변 행 (항상 렌더링) */}
@@ -125,3 +125,4 @@ function Question() {
 }
 
 export default Question;
+

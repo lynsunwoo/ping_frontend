@@ -204,27 +204,12 @@ function Upload(props) {
               </p>
             </div>
 
-            <input
-              ref={fileInputRef}
-              type="file"
-              className="upload_file"
-              accept='.png,.jpg,.jpeg,.pdf'
-              onChange={(e) => {
-                const selectedFile = e.target.files[0];
-                if (!selectedFile) return;
-              
-                setFile(selectedFile);
-              
-                // 이미지일 경우에만 preview 생성
-                if (selectedFile.type.startsWith("image/")) {
-                  const imageUrl = URL.createObjectURL(selectedFile);
-                  setPreview(imageUrl);
-                } else {
-                  setPreview(null);
-                }
-              }}
-              required
-            />
+            <input type="file" 
+              className="upload_file" 
+              accept='.png,.jpg,.jpeg,.pdf' 
+              onChange={(e) => setFile(e.target.files[0])} 
+              required 
+              />
           </div>
 
           {/* 제목 */}
@@ -315,6 +300,7 @@ function Upload(props) {
 
 
 export default Upload;
+
 
 
 

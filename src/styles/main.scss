@@ -3,7 +3,19 @@
 header.guest+main .main_hero-section .grid {
   padding-top: 280px;
 }
+html, body {
+  height: 100%;
+}
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* 핵심 */
+}
 /* =========================================================
   Typography (main / section)
   - main 안의 article/section 기본 타이포 세팅
@@ -39,6 +51,9 @@ main {
 ========================================================= */
 .main_hero-section {
   background: $gradient;
+
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
 
   .grid {
     padding: 200px 0;
@@ -77,6 +92,17 @@ main {
   }
 }
 
+@keyframes gradientMove {
+  0%{
+    background-position:  0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
 /* =========================================================
   FEEDBACK EXPLORER (좌측 메뉴/칩 + 우측 카드 리스트)
 ========================================================= */

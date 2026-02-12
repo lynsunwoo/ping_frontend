@@ -219,7 +219,7 @@ function Detail() {
                   ? pins.findIndex(p => p.pin_no === selectedPin.pin_no) + 1
                   : '-'}
               </span>
-              Pin Question
+              선택된 핀에 대한 피드백을 남겨주세요.
             </p>
 
             <hr />
@@ -264,7 +264,7 @@ function Detail() {
             </div>
 
             <div className="box-right_memo">
-              <p>My Memo (Private)</p>
+              <p>My Memo (Private) 🔐</p>
               {/* {memo.map(m => (
                 <div key={m.id}>
                   {m.content}
@@ -275,7 +275,7 @@ function Detail() {
 
               <textarea
                 className="card-box"
-                placeholder="이 질문에 대한 개인 메모"
+                placeholder={`이 게시물에 대한 개인의 생각이나 메모를 자유롭게 남겨보세요.\n(작성한 내용은 본인만 볼 수 있습니다)`}
                 disabled
               //value={memoText}
               //onChange={(e) => setMemoText(e.target.value)}
@@ -312,7 +312,7 @@ function Detail() {
                       ? pins.findIndex(p => p.pin_no === selectedPin.pin_no) + 1
                       : '-'}
                   </span>
-                  Pin Question
+                  선택된 핀에 대한 피드백을 남겨주세요.
                 </p>
 
                 <hr />
@@ -360,7 +360,7 @@ function Detail() {
                 </div>
 
                 <div className="box-right_memo">
-                  <p>My Memo (Private)</p>
+                  <p>My Memo (Private) 🔐</p>
                   {/* {memo.map(m => (
                     <div key={m.id}>
                       {m.content}
@@ -371,7 +371,7 @@ function Detail() {
 
                   <textarea
                     className="card-box"
-                    placeholder="이 질문에 대한 개인 메모"
+                    placeholder={`이 게시물에 대한 개인의 생각이나 메모를 자유롭게 남겨보세요.\n(작성한 내용은 본인만 볼 수 있습니다)`}
                     disabled
                   //value={memoText}
                   //onChange={(e) => setMemoText(e.target.value)}
@@ -395,4 +395,5 @@ function Detail() {
 
 
 export default Detail;
+
 

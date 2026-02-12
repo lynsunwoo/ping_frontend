@@ -210,16 +210,15 @@ function Upload(props) {
               onChange={(e) => {
                 const selectedFile = e.target.files[0];
                 if (!selectedFile) return;
-
-                setFile(selectedFile);
-
-                // 이미지일 경우에만 preview 생성
-                if (selectedFile.type.startsWith("image/")) {
-                  const imageUrl = URL.createObjectURL(selectedFile);
-                  setPreview(imageUrl);
-                } else {
-                  setPreview(null);
+              
+                if (preview) {
+                  URL.revokeObjectURL(preview);
                 }
+              
+                setFile(selectedFile);
+              
+                const imageUrl = URL.createObjectURL(selectedFile);
+                setPreview(imageUrl);
               }}
               required
             />

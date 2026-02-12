@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../styles/upload.scss';
-import upload from "../../assets/icon-upload.svg";
 import { useNavigate } from 'react-router-dom';
+import upload from "../../assets/icon-upload.svg";
 import axios from 'axios';
-
+import BASE_URL from '../../config';
 function Upload(props) {
 
   // 선택된 문제유형 클래스 변경을 위한 함수 설정 
@@ -13,19 +13,27 @@ function Upload(props) {
   // 페이지간 이동을 위한 url관리
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
-
+  
   //린 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
 
+  // useEffect(() => {
+  //   return () => {
+  //     if (preview) {
+  //       URL.revokeObjectURL(preview);
+  //     }
+  //   };
+  // }, [preview]);
+  
   /* ===============================
      🔹 카테고리 데이터 로딩
      =============================== */
   useEffect(() => {
     axios
-      .get('http://localhost:9070/api/categories')
+      .get(`${BASE_URL}/api/categories`)
       .then(res => {
         console.log('카테고리 응답:', res.data);
         setCategories(res.data);
@@ -82,7 +90,7 @@ function Upload(props) {
   //     );
 
   //     const res = await axios.post(
-  //       'http://localhost:9070/api/posts',
+  //       `${BASE_URL}/api/posts`,
   //       formData,
   //       {
   //         headers: {
@@ -136,7 +144,7 @@ function Upload(props) {
 
     try {
       const res = await axios.post(
-        'http://localhost:9070/api/posts',
+        `${BASE_URL}/api/posts`,
         formData,
         {
           headers: {
@@ -175,16 +183,17 @@ function Upload(props) {
         <form className="upload_form col-6">
 
           {/* 이미지 업로드 안내 영역 */}
-          <div className="upload_dropzone" role='button' tabIndex={0} onClick={() => fileInputRef.current?.click()}>
+        <div className="upload_dropzone" role='button' tabIndex={0}
+          onClick={() => fileInputRef.current?.click()}>
             <div className="upload_dropzoneInner">
-              {preview ? (
+              {preview  ?(
                 <div className="upload_preview">
                   <img src={preview} alt="미리보기" />
                 </div>
-              ) : (
-                <div className="upload_icon" aria-hidden="true">
-                  <img src={upload} alt="이미지 아이콘" />
-                </div>
+              ):(
+              <div className="upload_icon" aria-hidden="true">
+                <img src={upload} alt="이미지 아이콘" />
+              </div>
               )}
               <p className="upload_dropText">
                 <strong>클릭하여 업로드 </strong>
@@ -196,19 +205,20 @@ function Upload(props) {
               </p>
             </div>
 
-
             <input
               ref={fileInputRef}
               type="file"
-              accept=".png,.jpg,.jpeg,.pdf"
+              className="upload_file"
+              accept='.png,.jpg,.jpeg,.pdf'
               onChange={(e) => {
                 const selectedFile = e.target.files?.[0];
                 if (!selectedFile) return;
 
-                setFile(selectedFile);
-                setPreview(URL.createObjectURL(selectedFile));
-              }}
+              setFile(selectedFile);
+              setPreview(URL.createObjectURL(selectedFile));
+                }}
               style={{ display: 'none' }}
+              required
             />
           </div>
 
@@ -298,4 +308,8 @@ function Upload(props) {
   );
 }
 
+
 export default Upload;
+
+
+

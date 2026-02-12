@@ -192,7 +192,7 @@ function Upload(props) {
                 </div>
               ):(
               <div className="upload_icon" aria-hidden="true">
-                <img src={upload} alt="이미지 아이콘" />
+                <img src={imageIcon} alt="이미지 아이콘" />
               </div>
               )}
               <p className="upload_dropText">
@@ -310,5 +310,6 @@ function Upload(props) {
 
 
 export default Upload;
+
 
 

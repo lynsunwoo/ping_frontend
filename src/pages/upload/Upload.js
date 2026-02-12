@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../styles/upload.scss';
 import { useNavigate } from 'react-router-dom';
-import imageIcon from '../../assets/icon-image.svg';
+import upload from "../../assets/icon-upload.svg";
 import axios from 'axios';
 import BASE_URL from '../../config';
 function Upload(props) {
@@ -192,7 +192,7 @@ function Upload(props) {
                 </div>
               ):(
               <div className="upload_icon" aria-hidden="true">
-                <img src={imageIcon} alt="이미지 아이콘" />
+                <img src={upload} alt="이미지 아이콘" />
               </div>
               )}
               <p className="upload_dropText">
@@ -310,6 +310,7 @@ function Upload(props) {
 
 
 export default Upload;
+
 
 
 

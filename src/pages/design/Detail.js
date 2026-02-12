@@ -240,7 +240,7 @@ function Detail() {
                   <li key={a.answer_no}>
                     <strong>{a.user_nickname}</strong>
                     <br />
-                    {dayjs.utc(a.create_datetime).tz('Asia/Seoul').format('YYYY.MM.DD HH:mm')}
+                    {dayjs.utc(a.create_datetime).format('YYYY.MM.DD HH:mm')}
                     <br />
                     {a.answer_content}
                   </li>
@@ -334,7 +334,7 @@ function Detail() {
                         <strong>{a.user_nickname}</strong>
                         <br />
                         <span>
-                          {dayjs.utc(a.create_datetime).tz('Asia/Seoul').format('YYYY.MM.DD HH:mm')}
+                          {dayjs.utc(a.create_datetime).format('YYYY.MM.DD HH:mm')}
                         </span>
                         <br />
                         {a.answer_content}
@@ -395,3 +395,4 @@ function Detail() {
 
 
 export default Detail;
+

@@ -9,6 +9,7 @@ import 'dayjs/locale/ko';
 import BASE_URL from '../../config';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import defaultPost from '../../assets/default_post.png';
 
 dayjs.locale('ko');
 dayjs.extend(utc);
@@ -179,12 +180,18 @@ function Detail() {
 
             <div className="img_box">
               <div className="image_wrap">
-                {imageUrl && (
-                  <img
-                    src={`${BASE_URL}${imageUrl}`}
-                    alt="상세 이미지"
-                  />
-                )}
+                <img
+                  src={
+                    imageUrl
+                      ? `${BASE_URL}${imageUrl}`
+                      : defaultPost
+                  }
+                  alt="상세 이미지"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = defaultPost;
+                  }}
+                />
 
                 {pins.map((pin, index) => (
                   <div
@@ -395,5 +402,6 @@ function Detail() {
 
 
 export default Detail;
+
 
 

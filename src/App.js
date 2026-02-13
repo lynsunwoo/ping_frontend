@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
@@ -43,6 +44,24 @@ import QuestionForm from "./pages/questions/QuestionForm";
 
 
 function App() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     < >
       <BrowserRouter>
@@ -60,8 +79,8 @@ function App() {
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/archive' element={<Archive />} />
           <Route path="/upload/pineditor" element={<PinEditor />} />
-          <Route path='/qna' element={<Question/>} />
-          <Route path='/qna/form' element={<QuestionForm/>} />
+          <Route path='/qna' element={<Question />} />
+          <Route path='/qna/form' element={<QuestionForm />} />
 
           {/* 마이페이지 레이아웃 */}
           <Route path="/mypage" element={<MyPageLayout />}>
@@ -73,7 +92,7 @@ function App() {
             <Route path="profile" element={<MyProfile />} />
             <Route path="alarm" element={<MyAlarm />} />
           </Route>
-          
+
           {/* 관리자 레이아웃 */}
           <Route path="/admin" element={<AdminLayout />}>
             {/*  /admin -> /admin/design 로 URL을 바꿔줌 */}
@@ -91,7 +110,11 @@ function App() {
 
         {/* 푸터 */}
         <Footer />
-
+        {visivle &&(
+          <button className="top-button" onClick={scrollToTop}>
+            Top
+          </button>
+        )}
 
 
       </BrowserRouter>

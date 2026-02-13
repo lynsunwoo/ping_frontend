@@ -3,7 +3,9 @@
 header.guest+main .main_hero-section .grid {
   padding-top: 280px;
 }
-html, body {
+
+html,
+body {
   height: 100%;
 }
 
@@ -13,9 +15,52 @@ html, body {
   flex-direction: column;
 }
 
-main {
-  flex: 1; /* 핵심 */
+.top-button {
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  font-family: $font-family-kimm;
+  font-weight: 500;
+
+  @include btn-shadow; // 그림자만 적용
+
+  background: $gradient; // 그라디언트 따로 적용
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+main {
+  flex: 1;
+  /* 핵심 */
+}
+
 /* =========================================================
   Typography (main / section)
   - main 안의 article/section 기본 타이포 세팅
@@ -25,7 +70,7 @@ main {
   article {
     h2 {
       @include typo("displayXl", $bold);
-      white-space: nowrap; 
+      white-space: nowrap;
     }
 
     p {
@@ -93,16 +138,19 @@ main {
 }
 
 @keyframes gradientMove {
-  0%{
-    background-position:  0% 50%;
+  0% {
+    background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
-  100%{
+
+  100% {
     background-position: 0% 50%;
   }
 }
+
 /* =========================================================
   FEEDBACK EXPLORER (좌측 메뉴/칩 + 우측 카드 리스트)
 ========================================================= */
@@ -713,22 +761,24 @@ main {
   header.guest+main .main_hero-section .grid {
     padding-top: 20px;
   }
-  .meta {
-  padding: 12px 10px 14px;
 
-  h3 {
-    @include typo("bodytextLg", $bold);
-    margin-bottom: 6px;
-    overflow: hidden;
-    white-space: wrap;
-    text-overflow: ellipsis;
-    min-height: 52px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }}
+  .meta {
+    padding: 12px 10px 14px;
+
+    h3 {
+      @include typo("bodytextLg", $bold);
+      margin-bottom: 6px;
+      overflow: hidden;
+      white-space: wrap;
+      text-overflow: ellipsis;
+      min-height: 52px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
 
   main {
     article {
@@ -909,5 +959,9 @@ main {
         @include btn(md, "fixedMo", false);
       }
     }
+  }
+
+  .top-button {
+    display: none;
   }
 }

@@ -110,7 +110,7 @@ function App() {
 
         {/* 푸터 */}
         <Footer />
-        {visivle &&(
+        {visible &&(
           <button className="top-button" onClick={scrollToTop}>
             Top
           </button>
@@ -123,3 +123,4 @@ function App() {
 }
 
 export default App;
+

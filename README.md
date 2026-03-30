@@ -19,3 +19,7 @@ Cloudtype 환경에서 프론트엔드 배포를 진행했습니다.
 - 핀 위치 기반 질문 인터페이스
 - 카테고리별 검색 및 필터
 - 관리자 기능 일부 UI 연동
+
+## Related Repositories
+- Team Project Repository: [react-ping](https://github.com/Kwag-hoon/react-ping.git)
+- Backend Repository: [ping_backend](백엔드링크)
